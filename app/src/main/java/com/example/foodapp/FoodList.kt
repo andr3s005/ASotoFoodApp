@@ -1,25 +1,36 @@
 package com.example.foodapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,7 +88,8 @@ fun FoodList(){
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.heightIn(max = 500.dp)
     ) {
         items(comidas){ comida ->
             FoodItem(comida = comida)
@@ -105,23 +117,33 @@ fun FoodItem(comida: Comida){
                     .clip(RoundedCornerShape(8.dp))
             )
             Text(
-                text = comida.name,
-                fontSize = 16.sp,
+                text = comida.price,
+                color = Color.White,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(8.dp)
+                fontSize = 14.sp,
+                modifier = Modifier
+                    .align(Alignment.TopEnd as Alignment.Horizontal)
+                    .offset(x = (-8).dp, y = (8).dp)
+                    .background(Color(0xFFE55D5D), RoundedCornerShape(12.dp))
+                    .padding(vertical = 4.dp, horizontal = 8.dp)
             )
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .align(Alignment.BottomStart as Alignment.Horizontal)
+                    .fillMaxWidth()
+                    .offset( y = (24).dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = "Calificación: ${comida.rating}",
-                    fontSize = 14.sp
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = "Calificacion",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(16.dp)
                 )
+                Spacer(modifier = Modifier.width(4.dp))
                 Text(
-                    text = comida.price,
-                    fontSize = 16.sp,
+                    text = "${comida.rating} ${comida.name}",
+                    fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
