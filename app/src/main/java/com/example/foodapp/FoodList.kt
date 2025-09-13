@@ -76,8 +76,8 @@ fun FoodList(){
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(horizontal = 16.dp),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(comidas){ comida ->
             FoodItem(comida = comida)

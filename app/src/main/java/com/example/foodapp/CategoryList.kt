@@ -57,7 +57,7 @@ fun CategoryList(){
         )
     )
     LazyRow(
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(categories){ category ->
