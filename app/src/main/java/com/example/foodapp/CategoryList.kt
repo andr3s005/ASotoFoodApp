@@ -79,7 +79,7 @@ fun CategoryItem(category: Category){
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.Green)
+                    .background(Color(0xFFFFA500))
             )
         }
         Text(

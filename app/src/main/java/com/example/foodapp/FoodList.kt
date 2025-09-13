@@ -137,7 +137,7 @@ fun FoodItem(comida: Comida){
                 Icon(
                     imageVector = Icons.Default.Star,
                     contentDescription = "Calificacion",
-                    tint = Color(0xFF4CAF50),
+                    tint = Color(0xFFFFA500),
                     modifier = Modifier.size(16.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
