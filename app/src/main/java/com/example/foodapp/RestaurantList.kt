@@ -20,6 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import coil3.compose.rememberAsyncImagePainter
 
 data class Restaurante(
@@ -72,8 +73,8 @@ fun RestaurantItem(restaurante: Restaurante){
             modifier = Modifier.size(120.dp),
             shape = RoundedCornerShape(12.dp)
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(restaurante.image),
+            AsyncImage(
+                model = restaurante.image,
                 contentDescription = restaurante.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Share
@@ -60,6 +61,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PantallaPrincipal(modifier: Modifier = Modifier){
     Scaffold(
+        modifier = modifier.fillMaxSize(),
     topBar = {
         TopAppBar(
             title = {},
@@ -92,7 +94,7 @@ fun PantallaPrincipal(modifier: Modifier = Modifier){
             actions = {
                 IconButton( onClick = {}) {
                     Icon(
-                        imageVector = Icons.Default.ExitToApp,
+                        imageVector = Icons.AutoMirrored.Filled.ExitToApp,
                         contentDescription = "Cerrar Sesion",
                         tint = Color.Black
                     )

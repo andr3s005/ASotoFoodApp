@@ -34,6 +34,7 @@ import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import coil3.compose.rememberAsyncImagePainter
 
 
@@ -107,8 +108,8 @@ fun FoodItem(comida: Comida){
         Column(
             modifier = Modifier.padding(8.dp)
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(comida.image),
+            AsyncImage(
+                model = comida.image,
                 contentDescription = comida.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

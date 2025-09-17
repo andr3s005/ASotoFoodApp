@@ -1,5 +1,6 @@
 package com.example.foodapp
 
+import android.graphics.ImageDecoder
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,8 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.ImageLoader
+import coil3.compose.AsyncImage
 import coil3.compose.rememberAsyncImagePainter
 import coil3.decode.DataSource
 
@@ -56,6 +60,7 @@ fun CategoryList(){
             image = "https://cdn-icons-png.flaticon.com/512/8230/8230211.png"
         )
     )
+
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
@@ -73,8 +78,8 @@ fun CategoryItem(category: Category){
             modifier = Modifier.size(64.dp),
             shape = CircleShape
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(category.image),
+            AsyncImage(
+                model = category.image,
                 contentDescription = category.name,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
