@@ -20,9 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
-import coil3.compose.rememberAsyncImagePainter
-
+import coil.compose.AsyncImage
 data class Restaurante(
     val name: String,
     val image : String
@@ -33,27 +31,27 @@ fun RestaurantList(){
     val restaurantes = listOf(
         Restaurante(
             "Burguer King",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Burger_King_logo_%281999%E2%80%932020%29.svg/1012px-Burger_King_logo_%281999%E2%80%932020%29.svg.png"
+            "https://www.pixartprinting.it/blog/wp-content/uploads/2021/03/logo-1999-min.jpg"
         ),
         Restaurante(
             "McDonalds",
-            "https://cdn-icons-png.flaticon.com/512/5977/5977588.png"
+            "https://hipfonts.com/wp-content/uploads/2022/08/McDonalds-logo-cover.jpg"
         ),
         Restaurante(
             "KFC",
-            "https://cdn.iconscout.com/icon/free/png-256/free-kfc-icon-svg-download-png-226243.png"
+            "https://cdn.produkto.io/photos/2025/05/24/kfc-logo-2006.webp"
         ),
         Restaurante(
             "Toks",
-            "https://assets.galerias.com/v3/assets/blt1232874328ea9d91/bltb37e1539b08f69a0/6786ebc143dfa277144361cb/toks.png?branch=main_a"
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRj4Lkp29GKsWYnnUeUImyw7Esifh16p5w9g&s"
         ),
         Restaurante(
             "Starbucks",
-            "https://upload.wikimedia.org/wikipedia/sco/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/477px-Starbucks_Corporation_Logo_2011.svg.png"
+            "https://static.vecteezy.com/system/resources/previews/044/625/960/non_2x/starbucks-logotype-on-white-background-starbucks-corporation-logo-american-coffee-company-chain-of-coffee-houses-popular-drinks-beverage-take-with-you-cafe-editorial-free-vector.jpg"
         ),
         Restaurante(
             "Subway",
-            "https://newsroom.subway.com/download/Subway+Choicemark.png"
+            "https://gkpb.com.br/wp-content/uploads/2016/08/simbolo-subway-blog-gkpb.jpg"
         )
     )
     LazyRow(

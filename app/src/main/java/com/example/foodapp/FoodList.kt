@@ -3,10 +3,12 @@ package com.example.foodapp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -31,12 +33,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
+import androidx.compose.ui.modifier.modifierLocalProvider
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
-import coil3.compose.rememberAsyncImagePainter
-
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 data class Comida(
     val name : String,
@@ -50,7 +53,7 @@ fun FoodList(){
     val comidas = listOf(
         Comida(
             "Hamburguesa",
-            "https://png.pngtree.com/png-clipart/20231020/original/pngtree-3d-illustration-cheese-burger-png-image_13381662.png",
+            "https://thumbs.dreamstime.com/b/cheeseburger-americano-de-la-hamburguesa-cl%C3%A1sica-perfecta-de-la-hamburguesa-aislado-en-la-reflexi%C3%B3n-blanca-59054909.jpg",
             5.0,
             "$50.00"
         ),
@@ -68,7 +71,7 @@ fun FoodList(){
         ),
         Comida(
             "Caramel Macchiato",
-            "https://png.pngtree.com/png-vector/20240903/ourmid/pngtree-iced-coffee-drink-caramel-macchiato-whipped-cream-plastic-cup-cold-beverage-png-image_13735297.png",
+            "https://as1.ftcdn.net/jpg/05/22/52/30/1000_F_522523019_X6V9jVuyzeWzc4ksN2pzcm2HbNSXjUTl.jpg",
             5.0,
             "$98.00",
         ),
@@ -80,7 +83,7 @@ fun FoodList(){
         ),
         Comida(
             "Chilaquiles",
-            "https://png.pngtree.com/png-clipart/20240801/original/pngtree-traditional-mexican-chilaquiles-png-image_15681022.png",
+            "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/elgranchef/c/chilaquilesgrandes.jpg",
             5.0,
             "$120.00"
         )
@@ -107,15 +110,24 @@ fun FoodItem(comida: Comida){
     ) {
         Column(
             modifier = Modifier.padding(8.dp)
+                .background(Color.White)
         ) {
-            AsyncImage(
-                model = comida.image,
-                contentDescription = comida.name,
-                contentScale = ContentScale.Crop,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp)
+                    .height(100.dp)
                     .clip(RoundedCornerShape(8.dp))
+                    .background(Color.White)
+            ){
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(comida.image)
+                    .allowRgb565(false)
+                    .build(),
+                contentDescription = comida.name,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+
             )
             Text(
                 text = comida.price,
@@ -123,16 +135,15 @@ fun FoodItem(comida: Comida){
                 fontWeight = FontWeight.Bold,
                 fontSize = 14.sp,
                 modifier = Modifier
-                    .align(Alignment.TopEnd as Alignment.Horizontal)
-                    .offset(x = (-8).dp, y = (8).dp)
+                    .align(Alignment.BottomEnd)
+                    .padding(top = 8.dp, end = 8.dp)
                     .background(Color(0xFFE55D5D), RoundedCornerShape(12.dp))
                     .padding(vertical = 4.dp, horizontal = 8.dp)
             )
+                }
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
-                modifier = Modifier
-                    .align(Alignment.BottomStart as Alignment.Horizontal)
-                    .fillMaxWidth()
-                    .offset( y = (24).dp),
+                modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(

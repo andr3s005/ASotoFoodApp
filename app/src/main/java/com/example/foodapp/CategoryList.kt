@@ -22,10 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.ImageLoader
-import coil3.compose.AsyncImage
-import coil3.compose.rememberAsyncImagePainter
-import coil3.decode.DataSource
+import coil.compose.AsyncImage
 
 data class Category(
     val name : String,
@@ -37,11 +34,11 @@ fun CategoryList(){
     val categories = listOf(
         Category(
             name = "Comida Rapida",
-            image = "https://img.pikbest.com/png-images/20240830/fast-food-vector-art--7c-white-background-graphic-design_10772929.png!sw800"
+            image = "https://openclipart.org/image/2000px/289282"
         ),
         Category(
             name = "Italiana",
-            image = "https://png.pngtree.com/png-clipart/20240629/original/pngtree-3d-food-and-italian-flag-food-icons-illustration-vector-png-image_15439337.png"
+            image = "https://images.vexels.com/media/users/3/220598/isolated/preview/a13e4b43b618b66cc5782a819a81f393-spaghetti-italian-cuisine-flat.png"
         ),
         Category(
             name = "China",
